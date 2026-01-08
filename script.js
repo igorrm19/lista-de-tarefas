@@ -51,11 +51,13 @@ function updateCounter() {
     const completedCount = tasks.filter(t => t.completed).length;
     
     if (totalCount === 0) {
-        taskCounter.textContent = 'No tasks';
+        taskCounter.textContent = 'Nenhuma tarefa';
+    } else if (activeCount === 0) {
+        taskCounter.textContent = 'Todas concluídas!';
     } else if (activeCount === 1) {
-        taskCounter.textContent = '1 task left';
+        taskCounter.textContent = '1 tarefa restante';
     } else {
-        taskCounter.textContent = `${activeCount} tasks left`;
+        taskCounter.textContent = `${activeCount} tarefas restantes`;
     }
     
     clearCompletedBtn.disabled = completedCount === 0;
@@ -70,11 +72,11 @@ function renderTasks() {
         const emptyState = document.createElement('li');
         emptyState.className = 'empty-state';
         if (tasks.length === 0) {
-            emptyState.textContent = 'No tasks yet. Add one above!';
+            emptyState.textContent = 'Nenhuma tarefa ainda. Adicione uma acima!';
         } else if (searchQuery.trim()) {
-            emptyState.textContent = 'No tasks match your search.';
+            emptyState.textContent = 'Nenhuma tarefa corresponde à sua busca.';
         } else {
-            emptyState.textContent = 'No tasks in this filter.';
+            emptyState.textContent = 'Nenhuma tarefa neste filtro.';
         }
         taskList.appendChild(emptyState);
         updateCounter();
@@ -98,7 +100,7 @@ function renderTasks() {
         
         const deleteBtn = document.createElement('button');
         deleteBtn.className = 'delete-btn';
-        deleteBtn.textContent = 'Delete';
+        deleteBtn.textContent = 'Excluir';
         deleteBtn.dataset.id = task.id;
         
         li.appendChild(checkbox);
