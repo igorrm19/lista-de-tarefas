@@ -14,3 +14,4 @@
 ### Tela de Adição de Tarefa Mobile
 
 <img src="./public//Screenshot from 2026-01-08 02-34-36.png" alt="">
+
